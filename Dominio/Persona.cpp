@@ -5,6 +5,7 @@ Persona::Persona(string id, string nombre, int age, double temp, int presionArte
     this->id = id;
     this->nombre = nombre;
     this->age = age;
+    this->temp = temp;
     this->presionArterial = presionArterial;
     this->dolor = dolor;
     this->tipoDolor = tipoDolor;
@@ -44,6 +45,10 @@ string Persona::getTipoDolor(){
 
 int Persona::getTrauma(){
     return this->trauma;
+}
+
+int Persona::getSintomasNeurologicos(){
+    return this->sintomasNeurologicos;
 }
 
 int Persona::getRequiereCirugia(){

@@ -3,8 +3,6 @@
 
 template <class T>
 class Queue : private List<T> {
-    private:
-        Node<T>* start;
     public:
         Queue() : List<T>() {};
 

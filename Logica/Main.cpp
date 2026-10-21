@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-#include "Persona.h"
-#include "Queue.h"
-#include "List.h"
-#include "Node.h"
+#include "../Dominio/Persona.h"
+#include "../Dominio/Queue.h"
+#include "../Dominio/List.h"
+#include "../Dominio/Node.h"
 using namespace std;
 
 struct NodoAVL {
@@ -34,7 +34,7 @@ bool verificarCin(int& valor){
     return true;
 }
 
-void leerArchivo(){
+void leerArchivo(Queue<Persona*> cola){
     ifstream archivo("Pacientes.txt");
 
     if(!archivo.is_open()) {
@@ -70,7 +70,7 @@ void leerArchivo(){
 
         Persona* p = new Persona(id,nombre,age,temperatura,presionArterial,dolor,tipoDolor,trauma,sintomasNeurologicos,requiereCirugia,diasHospitalizacion);
         
-
+        cola.push(p);
     }
 }
 
@@ -87,8 +87,8 @@ void buscarPaciente(){
 }
 
 int main(){
-    Queue<Persona>* listaEspera = new Queue<Persona>();
-    leerArchivo();
+    Queue<Persona*> listaEspera;
+    leerArchivo(listaEspera);
     int opcion = 0;
     do{
         cout << "=== HOSPITAL MARMAJA ===" << endl;
