@@ -1,0 +1,12 @@
+1;Juan Perez;45;36.8;120;2;otro;0;0;0;0
+2;Maria Gonzalez;62;37.0;150;6;pecho;0;0;0;3
+3;Pedro Soto;30;36.6;118;7;cabeza;0;1;0;2
+4;Ana Rojas;25;36.9;122;8;extremidad;1;0;0;5
+5;Luis Munoz;50;37.2;130;9;abdomen;0;0;1;4
+6;Camila Diaz;8;38.1;100;4;abdomen;0;0;0;0
+7;Roberto Silva;70;39.8;85;10;pecho;0;0;0;7
+8;Carla Vega;55;36.7;125;3;otro;0;0;0;6
+9;Felipe Araya;12;37.5;105;5;extremidad;1;0;0;1
+10;Sofia Castro;38;36.5;115;1;otro;0;0;0;0
+11;Diego Fuentes;67;37.1;145;8;cabeza;0;1;0;4
+12;Valentina Rios;41;36.8;119;7;abdomen;0;0;1;3
