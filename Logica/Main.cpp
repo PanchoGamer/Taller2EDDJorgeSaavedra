@@ -57,8 +57,6 @@ void leerArchivo(Queue<Persona*>& cola){
         
         cola.push(p);
     }
-
-    cout << cola.size() << endl;
 }
 
 void atenderPacientes(Queue<Persona*>& lista, Queue<AVL*>& servicios){
