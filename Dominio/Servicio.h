@@ -5,7 +5,7 @@ using namespace std;
 class Servicio{
     public:
         static const int urgencias = 0;
-        static const int mediciaGeneral = 1;
+        static const int medicinaGeneral = 1;
         static const int cardiologia = 2;
         static const int neurologia = 3;
         static const int traumatologia = 4;
@@ -19,7 +19,7 @@ class Servicio{
         static string nombre(int s){
             switch(s){
                 case urgencias: return "Urgencia";
-                case mediciaGeneral: return "Medicina General";
+                case medicinaGeneral: return "Medicina General";
                 case cardiologia: return "Cardiologia";
                 case neurologia: return "Neuriologia";
                 case traumatologia: return "Traumatologia";

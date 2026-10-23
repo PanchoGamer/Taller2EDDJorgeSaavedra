@@ -20,7 +20,7 @@ ADD::~ADD(){
 bool ADD::responder(int pregunta, Persona* p){
     switch(pregunta){
         case pUrgente:
-            return p->getDolor() == 8 || p->getTemp() <= 35.0 || p->getTemp() >= 40.0;
+            return p->getDolor() >= 8 || p->getTemp() <= 35.0 || p->getTemp() >= 40.0;
         case pTrauma:
             return p->getTrauma() == 1;
         case pCirugia:
@@ -38,7 +38,7 @@ bool ADD::responder(int pregunta, Persona* p){
 }
 
 void ADD::construir(){
-    if (this->raiz == nullptr) return;
+    if (this->raiz != nullptr) return;
 
     DecisionNode* urgente = new DecisionNode("Dolor >= 8 o Temperatura <= 35.0 o Temperatura >= 40.0", "Dolor < 8 y Temperatura entre 35.0 y 40.0", pUrgente);
     DecisionNode* trauma = new DecisionNode("Trauma = 1", "Trauma = 0", pTrauma);
@@ -71,7 +71,7 @@ void ADD::construir(){
     pediatria->setNo(hospitalizacion);
 
     hospitalizacion->setSi(new DecisionNode(Servicio::hospitalizacion));
-    hospitalizacion->setNo(new DecisionNode(Servicio::mediciaGeneral));
+    hospitalizacion->setNo(new DecisionNode(Servicio::medicinaGeneral));
 
     this->raiz = urgente;
 }
@@ -79,7 +79,7 @@ void ADD::construir(){
 bool ADD::validarDatos(Persona* p){
     if(!p) return false;
     if(p->getAge() < 0) return false;
-    if(p->getDolor() < 0 || p->getDolor() > 1) return false;
+    if(p->getDolor() < 0 || p->getDolor() > 10) return false;
     if(p->getTrauma() < 0 || p->getTrauma() > 1) return false;
     if(p->getSintomasNeurologicos() < 0 || p->getSintomasNeurologicos() > 1) return false;
     if(p->getRequiereCirugia() < 0 || p->getRequiereCirugia() > 1) return false;
@@ -91,9 +91,9 @@ bool ADD::validarDatos(Persona* p){
 int ADD::evaluar(Persona* p, bool camino){
     if(this->raiz == nullptr || !validarDatos(p)){
         if(camino){
-            cout << "Ruta: datos invalidos ->" << Servicio::mediciaGeneral << endl;
+            cout << "Ruta: datos invalidos -> " << Servicio::medicinaGeneral << endl;
         }
-        return Servicio::mediciaGeneral;
+        return Servicio::medicinaGeneral;
     }
 
     DecisionNode* actual = this->raiz;

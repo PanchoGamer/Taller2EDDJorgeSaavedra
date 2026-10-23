@@ -64,25 +64,7 @@ void atenderPacientes(Queue<Persona*>& lista, Queue<AVL*>& servicios){
         Persona* p = lista.front();
         lista.pop();
 
-        if(p->getDolor() >= 8 || p->getTemp() >= 40 || p->getTemp() <= 35){
-            servicios.consultar(0)->insert(new NodeAVL(p));
-        } else if(p->getTrauma() == 1){
-            if(p->getRequiereCirugia() == 1){
-                servicios.consultar(5)->insert(new NodeAVL(p));
-            } else{
-                servicios.consultar(4)->insert(new NodeAVL(p));
-            }
-        } else if(p->getTipoDolor() == "pecho"){
-            servicios.consultar(2)->insert(new NodeAVL(p));
-        } else if(p->getSintomasNeurologicos() == 1){
-            servicios.consultar(3)->insert(new NodeAVL(p));
-        } else if(p->getAge() <= 14){
-            servicios.consultar(6)->insert(new NodeAVL(p));
-        } else if(p->getDiasHospitalizacion() > 0){
-            servicios.consultar(7)->insert(new NodeAVL(p));
-        } else{
-            servicios.consultar(1)->insert(new NodeAVL(p));
-        }
+        
 
     } else{
         cout << "No quedan pacientes" << endl;
