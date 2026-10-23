@@ -3,25 +3,29 @@
 #include "Servicio.h"
 using namespace std;
 
-int pUrgente = 0;
-int pTrauma = 1;
-int pCirugia = 2;
-int pPecho = 3;
-int pNeuro = 4;
-int pNiño = 5;
-int pHospital = 6;
+const int pUrgente = 0;
+const int pTrauma = 1;
+const int pCirugia = 2;
+const int pPecho = 3;
+const int pNeuro = 4;
+const int pNiño = 5;
+const int pHospital = 6;
 
 class DecisionNode{
     private:
         string descripcion;
+        string textoSi;
+        string textoNo;
         int pregunta;
         int servicio;
         bool hoja;
         DecisionNode* si = nullptr;
         DecisionNode* no = nullptr;
     public:
-        DecisionNode(string descripcion, int pregunta){
-            this->descripcion = descripcion;
+        DecisionNode(string textoSi, string textoNo, int pregunta){
+            this->descripcion = textoSi;
+            this->textoSi = textoSi;
+            this->textoNo = textoNo;
             this->pregunta = pregunta;
             this->servicio = 0;
             this->hoja = false;
@@ -48,6 +52,14 @@ class DecisionNode{
 
         string getDescripcion(){
             return this->descripcion;
+        }
+
+        string getTextoSi(){
+            return this->textoSi;
+        }
+
+        string getTextoNo(){
+            return this->textoNo;
         }
 
         int getServicio(){

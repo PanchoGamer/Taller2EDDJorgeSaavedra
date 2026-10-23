@@ -6,13 +6,16 @@ class ADD{
         DecisionNode* raiz;
 
         bool responder(int pregunta, Persona* p);
-
-        void inOrden(DecisionNode* nodo, int nivel);
-        void preOrden(DecisionNode* nodo, int nivel);
-        void postOrden(DecisionNode* nodo, int nivel);
+        
         void destruir(DecisionNode* nodo);
 
     public:
         ADD();
-        ADD(ADD*) = delete;
+        ~ADD();
+
+        void construir();
+
+        bool validarDatos(Persona* p);
+
+        int evaluar(Persona* p, bool camino);
 };
