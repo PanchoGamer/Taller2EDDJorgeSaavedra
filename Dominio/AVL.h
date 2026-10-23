@@ -11,7 +11,7 @@ class AVL{
         NodeAVL* rotarDerecha(NodeAVL* y);
         NodeAVL* rotarIzquierda(NodeAVL* x);
 
-        NodeAVL insertar(NodeAVL* node, Persona* p);
+        NodeAVL* insertar(NodeAVL* node, Persona* p);
         Persona* encontrarMedianteID(NodeAVL* node, string id);
         void inOrderRecursivo(NodeAVL* node);
         void preOrderRecursivo(NodeAVL* node);
@@ -28,7 +28,7 @@ class AVL{
 
         bool remove(NodeAVL* nodo);
 
-        void clear(NodeAVL* nodo);
+        void clear();
 
         NodeAVL* getRoot();
 
