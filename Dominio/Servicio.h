@@ -18,10 +18,10 @@ class Servicio{
 
         static string nombre(int s){
             switch(s){
-                case urgencias: return "Urgencia";
+                case urgencias: return "Urgencias";
                 case medicinaGeneral: return "Medicina General";
                 case cardiologia: return "Cardiologia";
-                case neurologia: return "Neuriologia";
+                case neurologia: return "Neurologia";
                 case traumatologia: return "Traumatologia";
                 case cirugia: return "Cirugia";
                 case pediatria: return "Pediatria";

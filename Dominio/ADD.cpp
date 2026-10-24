@@ -91,7 +91,7 @@ bool ADD::validarDatos(Persona* p){
 int ADD::evaluar(Persona* p, bool camino){
     if(this->raiz == nullptr || !validarDatos(p)){
         if(camino){
-            cout << "Ruta: datos invalidos -> " << Servicio::medicinaGeneral << endl;
+            cout << "Ruta: datos invalidos -> " << Servicio::nombre(Servicio::medicinaGeneral) << endl;
         }
         return Servicio::medicinaGeneral;
     }

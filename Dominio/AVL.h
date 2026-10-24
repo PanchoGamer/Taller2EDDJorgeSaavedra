@@ -3,7 +3,6 @@
 class AVL{
     private:
         NodeAVL* root;
-        AVL* next;
         
         int height(NodeAVL* nodo);
         void cambiarAltura(NodeAVL* nodo);
@@ -13,9 +12,6 @@ class AVL{
 
         NodeAVL* insertar(NodeAVL* node, Persona* p);
         Persona* encontrarMedianteID(NodeAVL* node, string id);
-        void inOrderRecursivo(NodeAVL* node);
-        void preOrderRecursivo(NodeAVL* node);
-        void postOrderRecursivo(NodeAVL* node);
         void mostrarBalance(NodeAVL* node);
         void destruir(NodeAVL* node);
 
@@ -24,31 +20,27 @@ class AVL{
 
         bool insert(Persona* p);
 
-        bool exists(NodeAVL* nodo);
+        bool exists(string id);
 
         bool remove(NodeAVL* nodo);
 
-        void clear();
-
         NodeAVL* getRoot();
-
-        AVL* getNext();
-
-        void setNext(AVL* next);
 
         Persona* encontrarPorID(string id);
 
-        void inOrder();
+        void inOrder(NodeAVL* node);
 
-        void preOrder();
+        void preOrder(NodeAVL* node);
         
-        void postOrder();
+        void postOrder(NodeAVL* node);
 
         int getHeight();
 
         void getFactorDeBalance();
 
         bool isEmpty();
+
+        void borrarTodo(NodeAVL* node);
         
         ~AVL();
 };

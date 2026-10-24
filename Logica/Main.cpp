@@ -19,7 +19,7 @@ bool verificarCin(int& valor){
     return true;
 }
 
-void leerArchivo(Queue<Persona*>& cola){
+void leerArchivo(Queue<Persona*>& cola){ //Lee el archivo de prueba de los pacientes y los envia a la queue
     ifstream archivo("Pacientes.txt");
 
     if(!archivo.is_open()) {
@@ -59,7 +59,7 @@ void leerArchivo(Queue<Persona*>& cola){
     }
 }
 
-void atenderPacientes(Queue<Persona*>& lista, Queue<AVL*>& servicios){
+void atenderPacientes(Queue<Persona*>& lista){ 
     if(!lista.empty()){
         Persona* p = lista.front();
         lista.pop();
@@ -82,7 +82,6 @@ void buscarPaciente(){
 
 int main(){
     Queue<Persona*> listaEspera;
-    Queue<AVL*> servicios;
     leerArchivo(listaEspera);
     int opcion = 0;
     do{
@@ -104,7 +103,7 @@ int main(){
         } else{
             switch (opcion){
                 case 1:
-                    atenderPacientes(listaEspera, servicios);
+                    atenderPacientes(listaEspera);
                     break;
                 case 2:
                     verDepartamentos();
