@@ -23,16 +23,17 @@ Urgencia->Cirugia/Traumatologia->Cardiologia->Neurologia->Pediatria->Hospitaliza
 - Medicina General: Al no cumplir con ninguna de las condiciones anteriores se envia a Medicina General.
 
 ## Instrucciones de Compilacion y Ejecucion
-Para compilar el taller utilice el comando
+Para compilar el taller debe ingresar a la seccion de codespace de github y crear un espacio con el repocitorio. Luego en la terminal del codespace utilice el comando:
 ```
 g++ Implement/Main.cpp Implement/ADD.cpp Implement/AVL.cpp Implement/Persona.cpp -o Taller2
 ```
 "Taller2" puede ser cambiado al nombre que prefiera
+Esto compilara el taller en un .exe
 
-Para ejecutar debe usar el comando
+Para ejecutarlo debe usar el comando:
 ```
 ./Taller2
 ```
-O en su defecto el nombre que coloco antes despues del "-o" en el comando anterior.
+O en su defecto colocar el nombre que coloco en el comando anterior despues del "-o" en el comando de ejecutar.
 
 El txt en el repositorio fue usado unicamente para probar casos de todos los departamentos y asi poder hacer prueba del AVL. Puede ser cambiado si necesita realizar casos en especifico.
