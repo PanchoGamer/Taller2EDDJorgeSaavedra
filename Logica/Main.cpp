@@ -7,6 +7,8 @@
 #include "../Dominio/List.h"
 #include "../Dominio/Node.h"
 #include "../Dominio/AVL.h"
+#include "../Dominio/Departamento.h"
+#include "../Dominio/ADD.h"
 using namespace std;
 
 bool verificarCin(int& valor){
@@ -59,6 +61,20 @@ void leerArchivo(Queue<Persona*>& cola){ //Lee el archivo de prueba de los pacie
     }
 }
 
+void crearArboles(List<Departamento*>* servicios){
+    string serv[] = {"Medicina General", "Cardiologia", "Neurologia", "Traumatologia", "Cirugia", "Pediatria", "Hospitalizacion"};
+    for(string s: serv){
+        Departamento* d = new Departamento(s);
+        servicios->insertLast(d);
+    }
+
+    int c = servicios->getSize();
+    for(int i = 0; i < c; i++){
+        Departamento* d = servicios->getRef(i);
+        cout << d->getNombre() << endl;
+    }
+}
+
 void mostrarPaciente(Persona* p){
     cout << "" << endl;
     cout << "ID: " << p->getId() << endl;
@@ -80,6 +96,16 @@ void atenderPacientes(Queue<Persona*>& lista){
         Persona* p = lista.front();
         lista.pop();
         mostrarPaciente(p);
+
+        ADD* arbolDecision = new ADD();
+        arbolDecision->construir();
+
+        int idServicio = arbolDecision->evaluar(p, true);
+
+        string nombreServicio = Servicio::nombre(idServicio);
+
+        cout << "\nServicio asignado: " << nombreServicio << endl;
+        cout << "" << endl;
     } else{
         cout << "No quedan pacientes" << endl;
     }
@@ -96,6 +122,8 @@ void buscarPaciente(){
 
 int main(){
     Queue<Persona*> listaEspera;
+    List<Departamento*>* servicios = new List<Departamento*>();
+    crearArboles(servicios);
     leerArchivo(listaEspera);
     int opcion = 0;
     do{
@@ -129,4 +157,6 @@ int main(){
         }
     } while (opcion != 4);
     
+    delete servicios;
+    return 0;
 }
