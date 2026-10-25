@@ -90,7 +90,7 @@ void mostrarPaciente(Persona* p){
     cout << "" << endl;
 }
 
-void atenderPacientes(Queue<Persona*>& lista){ 
+void atenderPacientes(Queue<Persona*>& lista, List<Departamento*>* servicios){ 
     cout << "=== ATENDIENDO PACIENTES ===" << endl;
     if(!lista.empty()){
         Persona* p = lista.front();
@@ -105,9 +105,17 @@ void atenderPacientes(Queue<Persona*>& lista){
         string nombreServicio = Servicio::nombre(idServicio);
 
         cout << "\nServicio asignado: " << nombreServicio << endl;
+
+        for(int i = 0; i < servicios->getSize(); i++){
+            Departamento* dep = servicios->get(i);
+            if(dep->getNombre() == nombreServicio){
+                dep->getArbol()->insert(p);
+            }
+        }
+        cout << "Paciente ingresado al AVL de " << nombreServicio << endl;
         cout << "" << endl;
     } else{
-        cout << "No quedan pacientes" << endl;
+        cout << "\nNo quedan pacientes\n" << endl;
     }
 }
 
@@ -145,7 +153,7 @@ int main(){
         } else{
             switch (opcion){
                 case 1:
-                    atenderPacientes(listaEspera);
+                    atenderPacientes(listaEspera,servicios);
                     break;
                 case 2:
                     verDepartamentos();
