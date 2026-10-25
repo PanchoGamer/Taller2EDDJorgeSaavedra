@@ -2,13 +2,12 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-#include "../Dominio/Persona.h"
-#include "../Dominio/Queue.h"
-#include "../Dominio/List.h"
-#include "../Dominio/Node.h"
-#include "../Dominio/AVL.h"
-#include "../Dominio/Departamento.h"
-#include "../Dominio/ADD.h"
+#include "../Headers/Queue.h"
+#include "../Headers/List.h"
+#include "../Headers/Node.h"
+#include "../Headers/AVL.h"
+#include "../Headers/Departamento.h"
+#include "../Headers/ADD.h"
 using namespace std;
 
 bool verificarCin(int& valor){
@@ -62,7 +61,7 @@ void leerArchivo(Queue<Persona*>& cola){ //Lee el archivo de prueba de los pacie
 }
 
 void crearArboles(List<Departamento*>* servicios){
-    string serv[] = {"Medicina General", "Cardiologia", "Neurologia", "Traumatologia", "Cirugia", "Pediatria", "Hospitalizacion"};
+    string serv[] = {"Urgencias", "Medicina General", "Cardiologia", "Neurologia", "Traumatologia", "Cirugia", "Pediatria", "Hospitalizacion"};
     for(string s: serv){
         Departamento* d = new Departamento(s);
         servicios->insertLast(d);

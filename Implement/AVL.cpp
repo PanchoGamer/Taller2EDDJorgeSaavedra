@@ -1,4 +1,4 @@
-    #include "AVL.h"
+    #include "../Headers/AVL.h"
     #include <iostream>
     using namespace std;
 
@@ -86,10 +86,14 @@
     Persona* AVL::encontrarMedianteID(NodeAVL* node, string id){
         if(!node) return nullptr;
         string nodeId = node->getPersona()->getId();
-        if(id == nodeId){
+
+        int idNumero = stoi(id);
+        int nodeIdNumero = stoi(nodeId);
+
+        if(idNumero == nodeIdNumero){
             return node->getPersona();
         }
-        if(id < nodeId){
+        if(idNumero < nodeIdNumero){
             return encontrarMedianteID(node->getLeft(), id);
         }
         return encontrarMedianteID(node->getRight(), id);

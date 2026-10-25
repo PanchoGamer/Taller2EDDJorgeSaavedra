@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ADD.h"
-#include "Persona.h"
+#include "../Headers/ADD.h"
+#include "../Headers/Persona.h"
 #include <string>
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "Persona.h"
+#include "../Headers/Persona.h"
 #include <string>
 
 Persona::Persona(string id, string nombre, int age, double temp, int presionArterial, int dolor, string tipoDolor, int trauma, int sintomasNeurologicos, int requiereCirugia, int diasHospitalizacion){

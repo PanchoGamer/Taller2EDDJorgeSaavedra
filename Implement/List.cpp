@@ -1,5 +1,4 @@
-#pragma once
-#include "List.h"
+#include "../Headers/List.h"
 
 template <class T>
 List<T>::List(){
