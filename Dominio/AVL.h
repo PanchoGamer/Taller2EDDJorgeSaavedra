@@ -1,4 +1,7 @@
+#pragma once
 #include "NodeAVL.h"
+#include <string>
+using namespace std;
 
 class AVL{
     private:
@@ -13,7 +16,7 @@ class AVL{
         NodeAVL* insertar(NodeAVL* node, Persona* p);
         Persona* encontrarMedianteID(NodeAVL* node, string id);
         void mostrarBalance(NodeAVL* node);
-        void destruir(NodeAVL* node);
+        void borrarTodo(NodeAVL* node);
 
     public:
         AVL();
@@ -39,8 +42,6 @@ class AVL{
         void getFactorDeBalance();
 
         bool isEmpty();
-
-        void borrarTodo(NodeAVL* node);
         
         ~AVL();
 };

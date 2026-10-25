@@ -6,7 +6,7 @@
 #include "../Dominio/Queue.h"
 #include "../Dominio/List.h"
 #include "../Dominio/Node.h"
-#include "../Dominio/AVL.h";
+#include "../Dominio/AVL.h"
 using namespace std;
 
 bool verificarCin(int& valor){
@@ -59,13 +59,27 @@ void leerArchivo(Queue<Persona*>& cola){ //Lee el archivo de prueba de los pacie
     }
 }
 
+void mostrarPaciente(Persona* p){
+    cout << "" << endl;
+    cout << "ID: " << p->getId() << endl;
+    cout << "Nombre: " << p->getNombre() << endl;
+    cout << "Edad: " << p->getAge() << endl;
+    cout << "Temperatura: " << p->getTemp() << endl;
+    cout << "Dolor: " << p->getDolor() << endl;
+    cout << "Tipo Dolor: " << p->getTipoDolor() << endl;
+    cout << "Trauma: " << p->getTrauma() << endl;
+    cout << "SintomasNeurologicos: " << p->getSintomasNeurologicos() << endl;
+    cout << "RequiereCirugia: " << p->getRequiereCirugia() << endl;
+    cout << "DiasHospitalizacion: " << p->getDiasHospitalizacion() << endl;
+    cout << "" << endl;
+}
+
 void atenderPacientes(Queue<Persona*>& lista){ 
+    cout << "=== ATENDIENDO PACIENTES ===" << endl;
     if(!lista.empty()){
         Persona* p = lista.front();
         lista.pop();
-
-        
-
+        mostrarPaciente(p);
     } else{
         cout << "No quedan pacientes" << endl;
     }
@@ -91,7 +105,7 @@ int main(){
         cout << "3. Buscar paciente" << endl;
         cout << "4. Salir" << endl;
         cout << "" << endl;
-        cout << "\nSeleccione opcion: ";
+        cout << "Seleccione opcion: ";
 
         if(!verificarCin(opcion)){
             cout << "Error. Use solo numeros\n" << endl;
