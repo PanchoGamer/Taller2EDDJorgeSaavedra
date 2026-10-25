@@ -67,12 +67,6 @@ void crearArboles(List<Departamento*>* servicios){
         Departamento* d = new Departamento(s);
         servicios->insertLast(d);
     }
-
-    int c = servicios->getSize();
-    for(int i = 0; i < c; i++){
-        Departamento* d = servicios->getRef(i);
-        cout << d->getNombre() << endl;
-    }
 }
 
 void mostrarPaciente(Persona* p){
@@ -149,14 +143,55 @@ void verDepartamentos(List<Departamento*>* servicios){
 
         cout << "" << endl;
     }
-
-    
 }
 
-void buscarPaciente(){
+void buscarPaciente(List<Departamento*>* servicios){
+    cout << "=== BUSCAR PACIENTE ===\n" << endl;
+    cout << "Indique el ID o el Nombre del paciente: ";
+    string buscar;
+    getline(cin,buscar);
 
+    cout << "\nBuscando en AVL...\n" << endl;
+
+    Persona* paciente = nullptr;
+    string dep = "";
+
+    for(int i = 0; i < servicios->getSize(); i++){
+        Departamento* depa = servicios->get(i);
+
+        paciente = depa->getArbol()->encontrarPorID(buscar);
+
+        if(paciente == nullptr){
+            paciente = depa->getArbol()->encontrarPorNombre(buscar);
+        }
+
+        if(paciente != nullptr){
+            dep = depa->getNombre();
+            break;
+        }
+    }
+
+    if(paciente != nullptr){
+        cout << "Paciente encontrado:" << endl;
+        cout << "-------" << endl;
+        cout << "ID: " << paciente->getId() << endl;
+        cout << "Nombre: " << paciente->getNombre() << endl;
+        cout << "Edad: " << paciente->getAge() << endl;
+        cout << "Departamento: " << dep << endl;
+
+        cout << "T: " << paciente->getTemp() << " | "
+             << "D: " << paciente->getDolor() << " | "
+             << "TD: " << paciente->getTipoDolor() << " | "
+             << "T: " << (paciente->getTrauma() == 1 ? "Si" : "No") << " | "
+             << "SN: " << (paciente->getSintomasNeurologicos() == 1 ? "Si" : "No") << " | "
+             << "RC: " << (paciente->getRequiereCirugia() == 1 ? "Si" : "No") << " | "
+             << "DH: " << (paciente->getDiasHospitalizacion() > 0 ? to_string(paciente->getDiasHospitalizacion()) : "Ninguno") 
+             << endl;
+        cout << "-------" << endl;
+    } else {
+        cout << "No se encontro ningun paciente con ese id o nombre" << endl;
+    }
 }
-
 
 int main(){
     Queue<Persona*> listaEspera;
@@ -189,7 +224,8 @@ int main(){
                     verDepartamentos(servicios);
                     break;
                 case 3:
-                    buscarPaciente();
+                    cin.ignore();
+                    buscarPaciente(servicios);
                     break;
             }
         }
