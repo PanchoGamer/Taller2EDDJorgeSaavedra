@@ -192,6 +192,63 @@ void buscarPaciente(List<Departamento*>* servicios){
     }
 }
 
+void mostrarPreOrder(List<Departamento*>* servicios){
+    cout << "=== RECORRIDO PREORDEN DE LOS DEPARTAMENTOS ===\n" << endl;
+    int c = servicios->getSize();
+    for(int i = 0; i < c; i++){
+        Departamento* dep = servicios->get(i);
+        cout << "Departamento: " << dep->getNombre() << endl;
+        
+        NodeAVL* n = dep->getArbol()->getRoot();
+        if(n == nullptr) {
+            cout << "Sin Pacientes" << endl;
+        } else {
+            dep->getArbol()->preOrder(n);
+            cout << endl;
+        }
+        cout << "-----------------------------------" << endl;
+    }
+    cout << endl;
+}
+
+void mostrarInOrder(List<Departamento*>* servicios){
+    cout << "=== RECORRIDO INORDER DE LOS DEPARTAMENTOS ===\n" << endl;
+    int c = servicios->getSize();
+    for(int i = 0; i < c; i++){
+        Departamento* dep = servicios->get(i);
+        cout << "Departamento: " << dep->getNombre() << endl;
+        
+        NodeAVL* n = dep->getArbol()->getRoot();
+        if(n == nullptr) {
+            cout << "Sin Pacientes" << endl;
+        } else {
+            dep->getArbol()->inOrder(n);
+            cout << endl;
+        }
+        cout << "-----------------------------------" << endl;
+    }
+    cout << endl;
+}
+
+void mostrarPostOrder(List<Departamento*>* servicios){
+    cout << "=== RECORRIDO POSTORDER DE LOS DEPARTAMENTOS ===\n" << endl;
+    int c = servicios->getSize();
+    for(int i = 0; i < c; i++){
+        Departamento* dep = servicios->get(i);
+        cout << "Departamento: " << dep->getNombre() << endl;
+        
+        NodeAVL* n = dep->getArbol()->getRoot();
+        if(n == nullptr) {
+            cout << "Sin Pacientes" << endl;
+        } else {
+            dep->getArbol()->postOrder(n);
+            cout << endl;
+        }
+        cout << "-----------------------------------" << endl;
+    }
+    cout << endl;
+}
+
 int main(){
     Queue<Persona*> listaEspera;
     List<Departamento*>* servicios = new List<Departamento*>();
@@ -203,7 +260,10 @@ int main(){
         cout << "1. Atender pacientes" << endl;
         cout << "2. Ver Departamentos" << endl;
         cout << "3. Buscar paciente" << endl;
-        cout << "4. Salir" << endl;
+        cout << "4. Mostrar preOrder" << endl;
+        cout << "5. Mostrar inOrder" << endl;
+        cout << "6. Mostrar postOrder" << endl;
+        cout << "7. Salir" << endl;
         cout << "" << endl;
         cout << "Seleccione opcion: ";
 
@@ -211,7 +271,7 @@ int main(){
             cout << "Error. Use solo numeros\n" << endl;
             continue;
         }
-        if(opcion < 1 || opcion > 4){
+        if(opcion < 1 || opcion > 7){
             cout << "Error ingrese entre las opciones mostradas" << endl;
             cout << "" << endl;
         } else{
@@ -226,10 +286,19 @@ int main(){
                     cin.ignore();
                     buscarPaciente(servicios);
                     break;
+                case 4:
+                    mostrarPreOrder(servicios);
+                    break;
+                case 5:
+                    mostrarInOrder(servicios);
+                    break;
+                case 6:
+                    mostrarPostOrder(servicios);
+                    break;
             }
         }
-    } while (opcion != 4);
-    
+    } while (opcion != 7);
+
     delete servicios;
     return 0;
 }
