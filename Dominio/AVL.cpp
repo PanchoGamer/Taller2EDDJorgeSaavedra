@@ -99,6 +99,25 @@
         return encontrarMedianteID(this->root, id);
     }
 
+    Persona* AVL::encontrarPorNombre(string nombre, NodeAVL* node, bool inicial){
+        if(inicial){
+            node = this->root;
+            inicial = false;
+        }
+        if (!node){
+            return nullptr;
+        }
+        if(node->getPersona()->getNombre() == nombre){
+            return node->getPersona();
+        }
+
+        Persona* p = encontrarPorNombre(nombre, node->getLeft(), false);
+        
+        if(p) return p;
+
+        return encontrarPorNombre(nombre, node->getRight(), false);
+    }
+
     bool AVL::exists(string id){
         return encontrarMedianteID(this->root, id) != nullptr;
     }

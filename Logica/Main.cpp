@@ -90,6 +90,21 @@ void mostrarPaciente(Persona* p){
     cout << "" << endl;
 }
 
+void mostrarPorAVL(NodeAVL* node){
+    if(!node){
+        return;
+    }
+    mostrarPorAVL(node->getLeft());
+
+    Persona* p = node->getPersona();
+
+    if(p != nullptr){
+        cout << "Pacientes: " << p->getNombre() << "(" << p->getId() << ")" << endl;
+    }
+
+    mostrarPorAVL(node->getRight());
+}
+
 void atenderPacientes(Queue<Persona*>& lista, List<Departamento*>* servicios){ 
     cout << "=== ATENDIENDO PACIENTES ===" << endl;
     if(!lista.empty()){
@@ -119,8 +134,23 @@ void atenderPacientes(Queue<Persona*>& lista, List<Departamento*>* servicios){
     }
 }
 
-void verDepartamentos(){
+void verDepartamentos(List<Departamento*>* servicios){
+    cout << "=== ESTADO DE LOS DEPARTAMENTOS ===\n" << endl;
 
+    for(int i = 0; i < servicios->getSize(); i++){
+        Departamento* dep = servicios->get(i);
+        cout << dep->getNombre() << endl;
+
+        if(dep->getArbol()->getRoot() == nullptr){
+            cout << "Sin Pacientes" << endl;
+        } else{
+            mostrarPorAVL(dep->getArbol()->getRoot());
+        }
+
+        cout << "" << endl;
+    }
+
+    
 }
 
 void buscarPaciente(){
@@ -156,7 +186,7 @@ int main(){
                     atenderPacientes(listaEspera,servicios);
                     break;
                 case 2:
-                    verDepartamentos();
+                    verDepartamentos(servicios);
                     break;
                 case 3:
                     buscarPaciente();

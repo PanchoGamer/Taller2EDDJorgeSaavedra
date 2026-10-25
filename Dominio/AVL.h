@@ -31,6 +31,8 @@ class AVL{
 
         Persona* encontrarPorID(string id);
 
+        Persona* encontrarPorNombre(string nombre, NodeAVL* node = nullptr, bool inicial = true);
+
         void inOrder(NodeAVL* node);
 
         void preOrder(NodeAVL* node);
